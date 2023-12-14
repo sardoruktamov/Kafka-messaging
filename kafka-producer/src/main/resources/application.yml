@@ -1,0 +1,14 @@
+
+spring:
+  profiles:
+    #    profile
+    active: dev
+  application:
+    name: kafka-producer
+  cloud:
+    config:
+      uri: ${cloud_config_url}
+      #      cloud config label
+      label: dev/Hasanboy
+  config:
+    import: optional:configserver:${cloud_config_url}
