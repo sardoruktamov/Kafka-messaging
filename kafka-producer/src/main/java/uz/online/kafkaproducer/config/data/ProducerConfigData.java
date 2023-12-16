@@ -1,10 +1,12 @@
 package uz.online.kafkaproducer.config.data;
 
+import lombok.Data;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Map;
 
+@Data
 @ConfigurationProperties(prefix = "kafka.producer")
 public class ProducerConfigData {
     private  String bootstrapServer;

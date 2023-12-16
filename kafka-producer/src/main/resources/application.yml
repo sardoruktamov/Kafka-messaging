@@ -1,8 +1,5 @@
 
 spring:
-  profiles:
-    #    profile
-    active: dev
   application:
     name: kafka-producer
   cloud:

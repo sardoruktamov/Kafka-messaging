@@ -3,8 +3,12 @@ package uz.online.kafkaproducer.service;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -16,7 +20,8 @@ public class KafkaProducerService {
 
     public void send(String topic, String message){
         try {
-            kafkaTemplate.send(topic,message)
+            Message<String> m = new GenericMessage<>(message, Map.of(KafkaHeaders.TOPIC, topic));
+            kafkaTemplate.send(m)
                     .thenAccept(result -> log.info("Message sent to kafka topic: {} ", result.getRecordMetadata().topic()));
         } catch (Exception e) {
             log.error("Error while sending message to {}, error: {}", topic,e.getMessage());
