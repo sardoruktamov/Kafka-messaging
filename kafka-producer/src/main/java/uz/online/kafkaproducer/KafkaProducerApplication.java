@@ -28,6 +28,7 @@ public class KafkaProducerApplication {
 			kafkaProducerService.send("simple", "Signal - topic uchun Xabar");
 			kafkaProducerService.sendByRouter("simple", "Signal - Router yordamida topici uchun Xabar".getBytes());
 			kafkaProducerService.sendByRouter("first", "First-signal - Router yordamida topici uchun Xabar");
+			kafkaProducerService.sendAndRecieve("simple", "simple-signal - RoutingKafkaTemplate yordamida topici uchun Xabar");
 		};
 
 	}
